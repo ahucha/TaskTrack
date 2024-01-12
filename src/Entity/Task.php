@@ -10,9 +10,12 @@ use ApiPlatform\Metadata\Operations;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 
 
 #[ApiResource()]
+#[ApiFilter(SearchFilter::class, properties: ['id' => 'exact'])]
 
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
 class Task
